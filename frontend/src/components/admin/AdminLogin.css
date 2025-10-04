@@ -1,55 +1,53 @@
-/* Auth Container */
-.auth-container {
-  min-height: 100vh;
+/* Admin Login Styles */
+.admin-login-container {
+  width: 100vw;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  padding: 20px;
+  background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+  padding: 2rem;
 }
 
-.auth-card {
+.admin-login-card {
   background: white;
   border-radius: 16px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-  padding: 40px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  padding: 3rem;
   width: 100%;
-  max-width: 450px;
+  max-width: 500px;
   animation: slideUp 0.5s ease-out;
 }
 
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+@media (min-width: 1024px) {
+  .admin-login-card {
+    max-width: 600px;
+    padding: 4rem;
   }
 }
 
-/* Auth Header */
-.auth-header {
+.admin-header {
   text-align: center;
   margin-bottom: 32px;
+  border-bottom: 2px solid #e2e8f0;
+  padding-bottom: 24px;
 }
 
-.auth-header h1 {
+.admin-header h1 {
   font-size: 2rem;
   font-weight: 700;
   color: #1a202c;
   margin: 0 0 8px 0;
 }
 
-.auth-header p {
+.admin-header p {
   color: #718096;
   font-size: 1rem;
   margin: 0;
+  font-weight: 500;
 }
 
-/* Auth Form */
-.auth-form {
+.admin-form {
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -74,13 +72,15 @@
   font-size: 1rem;
   transition: all 0.2s ease;
   background: #f7fafc;
+  color: #1a202c !important;
 }
 
 .form-group input:focus {
   outline: none;
-  border-color: #667eea;
+  border-color: #1a202c;
   background: white;
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  box-shadow: 0 0 0 3px rgba(26, 32, 44, 0.1);
+  color: #1a202c !important;
 }
 
 .form-group input:disabled {
@@ -89,9 +89,8 @@
   opacity: 0.7;
 }
 
-/* Auth Button */
-.auth-button {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+.admin-button {
+  background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
   color: white;
   border: none;
   padding: 14px 24px;
@@ -103,47 +102,40 @@
   margin-top: 8px;
 }
 
-.auth-button:hover:not(:disabled) {
+.admin-button:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 8px 25px rgba(26, 32, 44, 0.3);
 }
 
-.auth-button:active:not(:disabled) {
+.admin-button:active:not(:disabled) {
   transform: translateY(0);
 }
 
-.auth-button:disabled {
+.admin-button:disabled {
   opacity: 0.7;
   cursor: not-allowed;
   transform: none;
 }
 
-/* Auth Footer */
-.auth-footer {
+.admin-footer {
   text-align: center;
   margin-top: 32px;
   padding-top: 24px;
   border-top: 1px solid #e2e8f0;
 }
 
-.auth-footer p {
-  color: #718096;
-  margin: 0;
-}
-
-.auth-link {
-  color: #667eea;
+.back-link {
+  color: #1a202c;
   text-decoration: none;
   font-weight: 600;
   transition: color 0.2s ease;
 }
 
-.auth-link:hover {
-  color: #5a67d8;
+.back-link:hover {
+  color: #2d3748;
   text-decoration: underline;
 }
 
-/* Error Message */
 .error-message {
   background: #fed7d7;
   color: #c53030;
@@ -157,57 +149,15 @@
 
 /* Responsive Design */
 @media (max-width: 480px) {
-  .auth-container {
+  .admin-login-container {
     padding: 16px;
   }
   
-  .auth-card {
+  .admin-login-card {
     padding: 24px;
   }
   
-  .auth-header h1 {
+  .admin-header h1 {
     font-size: 1.75rem;
   }
-  
-  .auth-form {
-    gap: 20px;
-  }
-}
-
-/* Loading States */
-.auth-button:disabled {
-  position: relative;
-}
-
-.auth-button:disabled::after {
-  content: '';
-  position: absolute;
-  width: 16px;
-  height: 16px;
-  margin: auto;
-  border: 2px solid transparent;
-  border-top-color: #ffffff;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-/* Success States */
-.success-message {
-  background: #c6f6d5;
-  color: #22543d;
-  padding: 12px 16px;
-  border-radius: 8px;
-  font-size: 0.875rem;
-  font-weight: 500;
-  border: 1px solid #9ae6b4;
-  margin-bottom: 16px;
 }

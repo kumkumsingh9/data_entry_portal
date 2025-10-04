@@ -1,0 +1,474 @@
+/* Expert Scorecard Form Styles */
+.expert-scorecard-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+}
+
+.scorecard-header {
+  text-align: center;
+  margin-bottom: 30px;
+  padding: 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 12px;
+  color: white;
+}
+
+.scorecard-header h1 {
+  margin: 0 0 10px 0;
+  font-size: 2.2rem;
+  font-weight: 600;
+}
+
+.scorecard-description {
+  margin: 0;
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+/* Score Summary Card */
+.score-summary-card {
+  background: #f8f9fa;
+  border: 2px solid #e9ecef;
+  border-radius: 12px;
+  padding: 25px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.score-display {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  gap: 20px;
+}
+
+.total-score {
+  text-align: center;
+  flex: 1;
+}
+
+.total-score h3 {
+  margin: 0 0 10px 0;
+  color: #495057;
+  font-size: 1.1rem;
+}
+
+.score-value {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #2c3e50;
+  line-height: 1;
+}
+
+.score-range {
+  color: #6c757d;
+  margin-top: 5px;
+}
+
+.risk-category {
+  flex: 2;
+  text-align: center;
+  padding: 20px;
+  border-radius: 8px;
+  border: 2px solid;
+  transition: all 0.3s ease;
+}
+
+.risk-category h4 {
+  margin: 0 0 8px 0;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.risk-category p {
+  margin: 0 0 10px 0;
+  font-size: 0.95rem;
+}
+
+.score-range-info {
+  font-size: 0.85rem;
+  font-weight: 500;
+  opacity: 0.8;
+}
+
+/* Progress Bar */
+.scoring-progress {
+  position: relative;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 12px;
+  background-color: #e9ecef;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 6px;
+  transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+.progress-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: #6c757d;
+}
+
+/* Form Sections */
+.scorecard-section {
+  margin-bottom: 35px;
+  padding: 25px;
+  border: 1px solid #dee2e6;
+  border-radius: 10px;
+  background: #ffffff;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 0 25px 0;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #e9ecef;
+  color: #2c3e50;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.section-weight {
+  background: #17a2b8;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 15px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+/* Parameter Containers */
+.parameter-container {
+  margin-bottom: 25px;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+  transition: border-color 0.3s ease;
+}
+
+.parameter-container:hover {
+  border-color: #007bff;
+}
+
+.parameter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.parameter-label {
+  font-weight: 600;
+  color: #2c3e50;
+  font-size: 1rem;
+  flex: 1;
+}
+
+.parameter-label .required {
+  color: #dc3545;
+  margin-left: 4px;
+}
+
+.parameter-weight {
+  background: #28a745;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+/* Form Inputs */
+.parameter-select {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #ced4da;
+  border-radius: 6px;
+  font-size: 1rem;
+  background: white;
+  color: #495057 !important;
+  transition: border-color 0.3s ease;
+  margin-bottom: 10px;
+}
+
+.parameter-select:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+.parameter-select.error {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
+}
+
+.parameter-select option {
+  color: #495057 !important;
+  background: white !important;
+  padding: 8px;
+}
+
+.sales-officer-textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #ced4da;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-family: inherit;
+  resize: vertical;
+  min-height: 100px;
+  background: white;
+  color: #495057 !important;
+  transition: border-color 0.3s ease;
+}
+
+.sales-officer-textarea:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+.char-count {
+  text-align: right;
+  font-size: 0.85rem;
+  color: #6c757d;
+  margin-top: 5px;
+}
+
+/* Error Messages */
+.error-message {
+  color: #dc3545;
+  font-size: 0.85rem;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+/* Parameter Rationale */
+.parameter-rationale {
+  background: #e8f4fd;
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  color: #0c5460;
+  border-left: 4px solid #17a2b8;
+  margin-top: 10px;
+}
+
+.parameter-rationale strong {
+  color: #0c5460;
+}
+
+/* Risk Assessment Summary */
+.risk-assessment-summary {
+  background: #f8f9fa;
+  padding: 25px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  border: 1px solid #dee2e6;
+}
+
+.risk-assessment-summary h3 {
+  margin: 0 0 20px 0;
+  color: #2c3e50;
+  text-align: center;
+}
+
+.risk-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px;
+}
+
+.risk-item {
+  padding: 15px;
+  text-align: center;
+  border: 2px solid;
+  border-radius: 8px;
+  background: white;
+  transition: all 0.3s ease;
+  opacity: 0.6;
+}
+
+.risk-item.active {
+  opacity: 1;
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.risk-name {
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+}
+
+.risk-range {
+  font-size: 0.8rem;
+  color: #6c757d;
+}
+
+/* Form Actions */
+.form-actions {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  padding: 25px;
+  border-top: 2px solid #e9ecef;
+  margin-top: 30px;
+}
+
+.btn-primary,
+.btn-secondary {
+  padding: 12px 30px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 150px;
+}
+
+.btn-primary {
+  background: #007bff;
+  color: white;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: #0056b3;
+  transform: translateY(-2px);
+}
+
+.btn-primary:disabled {
+  background: #6c757d;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background: #6c757d;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background: #545b62;
+  transform: translateY(-2px);
+}
+
+/* Submission Success */
+.submission-success {
+  background: linear-gradient(135deg, #28a745, #20c997);
+  color: white;
+  padding: 25px;
+  border-radius: 10px;
+  text-align: center;
+  margin-top: 20px;
+  animation: slideIn 0.5s ease-out;
+}
+
+.submission-success h3 {
+  margin: 0 0 15px 0;
+  font-size: 1.3rem;
+}
+
+.submission-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.submission-summary p {
+  margin: 0;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 10px;
+  border-radius: 6px;
+}
+
+/* Animations */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .expert-scorecard-container {
+    padding: 15px;
+    margin: 10px;
+  }
+  
+  .scorecard-header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .score-display {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .section-header {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+  
+  .parameter-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+  
+  .form-actions {
+    flex-direction: column;
+  }
+  
+  .risk-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+  }
+  
+  .submission-summary {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .scorecard-header h1 {
+    font-size: 1.5rem;
+  }
+  
+  .score-value {
+    font-size: 2.5rem;
+  }
+  
+  .parameter-container {
+    padding: 15px;
+  }
+  
+  .scorecard-section {
+    padding: 20px;
+  }
+}

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import { formConfig } from '../data/formConfig';
+import FormNavigation from './FormNavigation';
 import axios from 'axios';
 import './UserForm.css';
 
@@ -51,8 +52,8 @@ const UserForm = () => {
         formName: 'MSE-Credit-Assessment',
         responses: formData,
         currentStep,
-        totalSteps: formConfig.totalSteps,
-        isCompleted: currentStep === formConfig.totalSteps
+        totalSteps: totalSteps,
+        isCompleted: currentStep === totalSteps
       });
 
       setMessage('Form data saved successfully!');
@@ -88,7 +89,7 @@ const UserForm = () => {
       return;
     }
 
-    if (currentStep < formConfig.totalSteps) {
+    if (currentStep < totalSteps) {
       setCurrentStep(prev => prev + 1);
       saveFormData();
     }
@@ -104,7 +105,7 @@ const UserForm = () => {
     // Validate all steps before submission
     let allMissingFields = [];
     
-    for (let step = 1; step <= formConfig.totalSteps; step++) {
+    for (let step = 1; step <= totalSteps; step++) {
       const stepFields = formConfig.steps[step - 1]?.fields || [];
       const requiredFields = stepFields.filter(field => field.required);
       const missingFields = requiredFields.filter(field => {
@@ -128,7 +129,7 @@ const UserForm = () => {
         formName: 'MSE-Credit-Assessment',
         responses: formData,
         currentStep,
-        totalSteps: formConfig.totalSteps,
+        totalSteps: totalSteps,
         isCompleted: true
       });
 
@@ -153,6 +154,7 @@ const UserForm = () => {
 
   return (
     <div className="user-form">
+      <FormNavigation />
       <header className="form-header">
         <div className="header-content">
           <h1>MSE Credit Assessment Form v{formConfig.version}</h1>
@@ -172,10 +174,10 @@ const UserForm = () => {
             <div className="progress-bar">
               <div 
                 className="progress-fill" 
-                style={{ width: `${(currentStep / formConfig.totalSteps) * 100}%` }}
+                style={{ width: `${(currentStep / totalSteps) * 100}%` }}
               ></div>
             </div>
-            <p>Step {currentStep} of {formConfig.totalSteps} - {formConfig.steps[currentStep - 1]?.title}</p>
+            <p>Step {currentStep} of {totalSteps} - {formConfig.steps[currentStep - 1]?.title}</p>
             
             {/* Step Indicators */}
             <div className="step-indicators">
@@ -294,7 +296,7 @@ const UserForm = () => {
               </button>
             </div>
 
-            {currentStep === formConfig.totalSteps ? (
+            {currentStep === totalSteps ? (
               <button 
                 onClick={submitForm}
                 disabled={saving}

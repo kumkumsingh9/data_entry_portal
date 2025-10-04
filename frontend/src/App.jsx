@@ -1,8 +1,12 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { AuthProvider, useAuth } from './contexts/AuthContext';
+import { AuthProvider } from './contexts/AuthContext';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import UserForm from './components/UserForm';
+import MSECreditAssessment from './components/MSECreditAssessment';
+import OutputSheetForm from './components/OutputSheetForm';
+import ExpertScorecardForm from './components/ExpertScorecardForm';
+import FinancialAnalysisForm from './components/FinancialAnalysisForm';
 import AdminLogin from './components/admin/AdminLogin';
 import AdminDashboard from './components/admin/AdminDashboard';
 import ProtectedRoute from './components/ProtectedRoute';
@@ -28,6 +32,46 @@ function App() {
               element={
                 <ProtectedRoute>
                   <UserForm />
+                </ProtectedRoute>
+              } 
+            />
+            
+            {/* MSE Credit Assessment Route */}
+            <Route 
+              path="/mse-assessment" 
+              element={
+                <ProtectedRoute>
+                  <MSECreditAssessment />
+                </ProtectedRoute>
+              } 
+            />
+            
+            {/* Output Sheet Analysis Route */}
+            <Route 
+              path="/output-analysis" 
+              element={
+                <ProtectedRoute>
+                  <OutputSheetForm />
+                </ProtectedRoute>
+              } 
+            />
+            
+            {/* Expert Scorecard Route */}
+            <Route 
+              path="/expert-scorecard" 
+              element={
+                <ProtectedRoute>
+                  <ExpertScorecardForm />
+                </ProtectedRoute>
+              } 
+            />
+            
+            {/* Financial Analysis Route */}
+            <Route 
+              path="/financial-analysis" 
+              element={
+                <ProtectedRoute>
+                  <FinancialAnalysisForm />
                 </ProtectedRoute>
               } 
             />

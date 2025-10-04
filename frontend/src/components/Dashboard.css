@@ -1,7 +1,11 @@
 /* Dashboard Layout */
 .dashboard {
-  min-height: 100vh;
+  width: 100%;
+  height: 100vh;
   background: #f8fafc;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
 }
 
 .dashboard-header {
@@ -12,9 +16,10 @@
 }
 
 .header-content {
-  max-width: 1200px;
+  width: 100%;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -55,15 +60,18 @@
 }
 
 .dashboard-main {
-  max-width: 1200px;
+  flex: 1;
+  width: 100%;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 2rem 1rem;
+  padding: 2rem;
 }
 
 .dashboard-content {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  height: 100%;
 }
 
 /* Welcome Section */
@@ -91,8 +99,20 @@
 /* Stats Grid */
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+@media (min-width: 1024px) {
+  .stats-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 .stat-card {
@@ -219,6 +239,7 @@
     flex-direction: column;
     gap: 1rem;
     text-align: center;
+    padding: 0 1rem;
   }
   
   .dashboard-main {
@@ -227,6 +248,7 @@
   
   .stats-grid {
     grid-template-columns: 1fr;
+    gap: 1rem;
   }
   
   .welcome-section h2 {
@@ -242,9 +264,19 @@
     width: 50px;
     height: 50px;
   }
+}
+
+/* Large Desktop Styles */
+@media (min-width: 1400px) {
+  .dashboard-content {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 3rem;
+    align-items: start;
+  }
   
-  .stat-content h3 {
-    font-size: 1.5rem;
+  .welcome-section {
+    grid-column: 1 / -1;
   }
 }
 
@@ -257,7 +289,7 @@
     padding: 1.5rem;
   }
   
-  .action-card {
-    padding: 1.5rem;
+  .stat-card {
+    padding: 1rem;
   }
 }
