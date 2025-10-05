@@ -125,32 +125,6 @@ const AdminDashboard = () => {
   const handleFormNavigation = (route) => {
     navigate(route);
   };
-
-  const testAdminAuth = async () => {
-    try {
-      const token = localStorage.getItem('adminToken');
-      console.log('Testing with token:', token ? `${token.substring(0, 20)}...` : 'No token found');
-      
-      // First test basic connectivity
-      const pingResponse = await axios.get('/api/admin/ping');
-      console.log('Ping response:', pingResponse.data);
-      
-      // Then test authentication
-      const response = await axios.get('/api/admin/test', {
-        headers: {
-          'Authorization': `Bearer ${token}`
-        }
-      });
-      console.log('Admin test response:', response.data);
-      alert('Admin authentication test successful!');
-    } catch (err) {
-      console.error('Admin test error:', err);
-      const errorMsg = err.response?.data?.message || err.message;
-      console.error('Full error:', err.response?.data);
-      alert(`Admin test failed: ${errorMsg}`);
-    }
-  };
-
   if (loading) {
     return (
       <div className="admin-loading">
@@ -182,12 +156,6 @@ const AdminDashboard = () => {
             <p>Manage all form submissions and user data</p>
           </div>
           <div className="header-actions">
-            <button onClick={() => navigate('/admin/users')} className="users-btn" style={{marginRight: '0.5rem'}}>
-              👥 User Management
-            </button>
-            <button onClick={testAdminAuth} className="refresh-btn" style={{marginRight: '0.5rem'}}>
-              🔍 Test Auth
-            </button>
             <button onClick={fetchDashboardData} className="refresh-btn">
               🔄 Refresh
             </button>
