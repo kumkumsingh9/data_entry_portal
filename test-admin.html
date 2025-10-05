@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Admin API</title>
+</head>
+<body>
+    <h1>Test Admin Login API</h1>
+    <button onclick="testAdminLogin()">Test Admin Login</button>
+    <button onclick="testAdminTest()">Test Admin Route</button>
+    <div id="result"></div>
+
+    <script>
+        async function testAdminLogin() {
+            try {
+                const response = await fetch('http://localhost:5000/api/admin/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        email: 'admin@dataentry.com',
+                        password: 'admin123'
+                    })
+                });
+
+                const result = document.getElementById('result');
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    result.innerHTML = '<h3>Login Success:</h3><pre>' + JSON.stringify(data, null, 2) + '</pre>';
+                } else {
+                    result.innerHTML = '<h3>Login Failed:</h3><p>Status: ' + response.status + '</p><p>Status Text: ' + response.statusText + '</p>';
+                }
+            } catch (error) {
+                document.getElementById('result').innerHTML = '<h3>Error:</h3><p>' + error.message + '</p>';
+            }
+        }
+
+        async function testAdminTest() {
+            try {
+                const response = await fetch('http://localhost:5000/api/admin/test');
+                const result = document.getElementById('result');
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    result.innerHTML = '<h3>Test Route Success:</h3><pre>' + JSON.stringify(data, null, 2) + '</pre>';
+                } else {
+                    result.innerHTML = '<h3>Test Route Failed:</h3><p>Status: ' + response.status + '</p>';
+                }
+            } catch (error) {
+                document.getElementById('result').innerHTML = '<h3>Error:</h3><p>' + error.message + '</p>';
+            }
+        }
+    </script>
+</body>
+</html>

@@ -232,3 +232,21 @@
   border: 1px solid #9ae6b4;
   margin-bottom: 16px;
 }
+
+/* Admin Hint */
+.admin-hint {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e1e8ed;
+}
+
+.hint-text {
+  margin: 0;
+  text-align: center;
+  color: #6b7280;
+}
+
+.hint-text small {
+  font-size: 0.75rem;
+  opacity: 0.8;
+}

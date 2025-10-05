@@ -27,12 +27,57 @@ const Login = () => {
     setLoading(true);
     setError('');
 
-    const result = await login(formData.email, formData.password);
-    
-    if (result.success) {
-      navigate('/dashboard');
+    // Check if admin credentials
+    if (formData.email === 'admin@dataentry.com' && formData.password === 'admin123') {
+      // Admin login
+      try {
+        const response = await fetch('/api/admin/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            email: formData.email,
+            password: formData.password
+          }),
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          localStorage.setItem('adminToken', data.token);
+          localStorage.setItem('adminUser', JSON.stringify(data.user));
+          navigate('/admin');
+        } else {
+          // Handle non-200 responses
+          let errorMessage = 'Admin login failed';
+          try {
+            const errorData = await response.json();
+            errorMessage = errorData.message || errorMessage;
+          } catch {
+            // Response doesn't contain JSON, use status-based message
+            if (response.status === 404) {
+              errorMessage = 'Admin login endpoint not found. Please check server configuration.';
+            } else if (response.status === 401) {
+              errorMessage = 'Invalid admin credentials';
+            } else {
+              errorMessage = `Server error: ${response.status}`;
+            }
+          }
+          setError(errorMessage);
+        }
+      } catch (err) {
+        console.error('Admin login error:', err);
+        setError('Network error. Please try again.');
+      }
     } else {
-      setError(result.message);
+      // Regular user login
+      const result = await login(formData.email, formData.password);
+      
+      if (result.success) {
+        navigate('/dashboard');
+      } else {
+        setError(result.message);
+      }
     }
     
     setLoading(false);
@@ -97,6 +142,11 @@ const Login = () => {
               Sign up here
             </Link>
           </p>
+          <div className="admin-hint">
+            <p className="hint-text">
+              <small>Admin? Use admin credentials to access admin dashboard</small>
+            </p>
+          </div>
         </div>
       </div>
     </div>

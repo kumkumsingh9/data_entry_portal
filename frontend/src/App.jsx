@@ -7,8 +7,12 @@ import MSECreditAssessment from './components/MSECreditAssessment';
 import OutputSheetForm from './components/OutputSheetForm';
 import ExpertScorecardForm from './components/ExpertScorecardForm';
 import FinancialAnalysisForm from './components/FinancialAnalysisForm';
-import AdminLogin from './components/admin/AdminLogin';
+import BankAnalysisForm from './components/BankAnalysisForm';
+import CreditAppMemoForm from './components/CreditAppMemoForm';
 import AdminDashboard from './components/admin/AdminDashboard';
+import FormSubmissions from './components/admin/FormSubmissions';
+import SubmissionDetail from './components/admin/SubmissionDetail';
+import UserManagement from './components/admin/UserManagement';
 import ProtectedRoute from './components/ProtectedRoute';
 import './App.css';
 
@@ -76,8 +80,36 @@ function App() {
               } 
             />
             
+            {/* Bank Analysis Route */}
+            <Route 
+              path="/bank-analysis" 
+              element={
+                <ProtectedRoute>
+                  <BankAnalysisForm />
+                </ProtectedRoute>
+              } 
+            />
+            
+            {/* Credit App Memo Route */}
+            <Route 
+              path="/credit-app-memo" 
+              element={
+                <ProtectedRoute>
+                  <CreditAppMemoForm />
+                </ProtectedRoute>
+              } 
+            />
+            
             {/* Admin Routes */}
-            <Route path="/admin/login" element={<AdminLogin />} />
+            <Route 
+              path="/admin" 
+              element={
+                <AdminRoute>
+                  <AdminDashboard />
+                </AdminRoute>
+              } 
+            />
+            
             <Route 
               path="/admin/dashboard" 
               element={
@@ -87,9 +119,39 @@ function App() {
               } 
             />
             
+            {/* Admin User Management Route */}
+            <Route 
+              path="/admin/users" 
+              element={
+                <AdminRoute>
+                  <UserManagement />
+                </AdminRoute>
+              } 
+            />
+            
+            {/* Admin Form Submission Routes */}
+            <Route 
+              path="/admin/forms/:formType" 
+              element={
+                <AdminRoute>
+                  <FormSubmissions />
+                </AdminRoute>
+              } 
+            />
+            
+            {/* Admin Submission Detail Routes */}
+            <Route 
+              path="/admin/submissions/:formType/:submissionId" 
+              element={
+                <AdminRoute>
+                  <SubmissionDetail />
+                </AdminRoute>
+              } 
+            />
+            
             {/* Default Routes */}
-            <Route path="/" element={<Navigate to="/form" replace />} />
-            <Route path="/admin" element={<Navigate to="/admin/login" replace />} />
+            <Route path="/" element={<Navigate to="/login" replace />} />
+            <Route path="/admin/login" element={<Navigate to="/login" replace />} />
             <Route path="/dashboard" element={<Navigate to="/form" replace />} />
           </Routes>
         </div>

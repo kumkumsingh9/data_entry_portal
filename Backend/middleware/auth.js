@@ -10,6 +10,19 @@ const auth = async (req, res, next) => {
     }
 
     const decoded = jwt.verify(token, process.env.JWT_SECRET || 'your-secret-key');
+    
+    // Handle admin authentication
+    if (decoded.userId === 'admin' && decoded.role === 'admin') {
+      req.user = {
+        userId: 'admin',
+        role: 'admin',
+        name: 'System Administrator',
+        email: 'admin@dataentry.com'
+      };
+      return next();
+    }
+    
+    // Handle regular user authentication
     const user = await User.findById(decoded.userId).select('-password');
     
     if (!user || !user.isActive) {
